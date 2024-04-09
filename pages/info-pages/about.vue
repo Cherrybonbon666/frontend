@@ -7,9 +7,9 @@
 
 <script setup>
 useHead({
-    title:"Pete Shop | เกี่ยวกับเรา",
+    title:"TrendyTreehugger | เกี่ยวกับเรา",
     meta: [
-        {name:"description",content:"ร้านค้ามอุปกรณ์คอมพิวเตอร์,เสื้อผ้า"}
+        {name:"description",content:"ร้านค้าเเฟชั่น"}
     ]
 })
 </script>

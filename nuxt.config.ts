@@ -1,11 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    app: {
-      head: {
-        title:"ร้านค้าเด็กชายพีท",
-        meta:[
-            {name:"desscription",content:"รายละเอียดเว็บไซต์"}
-        ]
-      }
+  app: {
+    head: {
+      title: "TrendyTreehugger",
+      meta: [
+        { name: "desscription", content: "รายละเอียดเว็บไซต์" }
+      ]
     }
+  }
+
+
+
 })
+
+modules: [
+  '@nuxtjs/axios',
+  '@nuxtjs/auth-next'
+]

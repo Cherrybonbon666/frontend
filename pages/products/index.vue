@@ -11,9 +11,9 @@
 
 <script setup>
 useHead({
-    title: "Pete Shop | สินค้าทั้งหมด",
+    title: "TrendyTreehugger | สินค้าทั้งหมด",
     meta: [
-        { name: "description", content: "ร้านค้ามอุปกรณ์คอมพิวเตอร์,เสื้อผ้า" }
+        { name: "description", content: "ร้านค้าเเฟชั่น" }
     ]
 })
 const { data: data } = await useFetch('https://dummyjson.com/products?limit=12')
@@ -30,7 +30,8 @@ const { data: data } = await useFetch('https://dummyjson.com/products?limit=12')
     width: 300px;
     height: 300px;
     margin: 30px 15px;
-    background: #333;
+    background: #638889;
+    border-radius: 10px;
 }
 
 .title {
@@ -40,7 +41,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products?limit=12')
 }
 
 .container div:hover {
-    background: orange;
+    background: #9DBC98;
 }
 
 img {

@@ -15,12 +15,60 @@
             <div class="text2">
                 <h1>Track product's carbon footprint</h1>
             </div>
+            <div class="input-con">
+
+                <div class="input">
+                    <h1>Input</h1>
+                    <p>Product Name</p>
+                </div>
+                <div class="input">
+                    <h1>Input</h1>
+                    <p>Category</p>
+                </div>
+                <div class="input">
+                    <h1>Input</h1>
+                    <p>Carbon Footprint</p>
+                </div>
+                <div class="input">
+                    <h1>Input</h1>
+                    <p>Description</p>
+                </div>
+
+            </div>
+            <a id="submit" href="#">Submit</a>
 
         </div>
 
         <div class="hero3">
             <div class="text3">
                 <h1>Carbon Footprint History</h1>
+
+                <div class="column-top">
+                    <p>Product</p>
+                    <p id="carbon">Carbon Footprint</p>
+                    <p>Date</p>
+                </div>
+
+                <div class="his-con">
+                    <div class="name">
+                        <p>Name</p>
+                        <p>description</p>
+                    </div>
+                    <p>Kg.</p>
+                    <p>DD/MM/YYYY</p>
+                    <label><a href="#"><i class="fa-solid fa-trash"></i></a></label>
+                </div>
+
+                <div class="his-con">
+                    <div class="name">
+                        <p>Name</p>
+                        <p>description</p>
+                    </div>
+                    <p>Kg.</p>
+                    <p>DD/MM/YYYY</p>
+                    <label><a href="#"><i class="fa-solid fa-trash"></i></a></label>
+                </div>
+
             </div>
         </div>
     </div>
@@ -62,6 +110,9 @@ useHead({
 .hero2 {
     height: 567px;
     background-color: #FFF6CF;
+    text-align: center;
+    padding-top: 100px;
+
 }
 
 .text2 {
@@ -69,13 +120,69 @@ useHead({
     padding: 40px;
 }
 
+.input-con {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.input {
+    text-align: center;
+    margin: 0 50px;
+}
+
+#submit {
+    color: #333;
+    background-color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: #333 2px solid;
+
+}
+
 .hero3 {
     height: 567px;
     background-color: #fff9ed;
+    padding: 0 60px;
 }
 
 .text3 {
-    text-align: center;
     padding: 40px;
+}
+
+.column-top {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 62%;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.his-con {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #333;
+    margin: 20px 0;
+
+    & a {
+        color: #333;
+        margin-right: 60px;
+        border: 1px solid #333;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+.name {
+    justify-content: left;
+}
+
+#carbon {
+    margin-left: 110px;
 }
 </style>

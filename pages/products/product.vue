@@ -1,12 +1,17 @@
 <template>
-    <div class="container">
-        <div v-for="product in data.products">
-            <img :src=product.thumbnail>
-            <NuxtLink :to="`/products/${product.id}`">
-                <h2 class="title">{{ product.title }}</h2>
-            </NuxtLink>
+    <div class="background">
+        <div class="head-con">
 
-            <button @click="addToCart">Add to Cart</button>
+        </div>
+        <div class="container">
+            <div v-for="product in data.products">
+                <img :src=product.thumbnail>
+                <NuxtLink :to="`/products/${product.id}`">
+                    <h4 class="title">{{ product.title }}</h4>
+                    <h4 class="price">${{ product.price }}</h4>
+                </NuxtLink>
+                <button type="button" onclick="#">Add to cart</button>
+            </div>
         </div>
     </div>
 </template>
@@ -21,14 +26,7 @@ useHead({
 const { data: data } = await useFetch('https://dummyjson.com/products?limit=12')
 </script>
 <script>
-export default {
-    props: ['product'],
-    methods: {
-        addToCart() {
-            this.$emit('add-to-cart', this.product);
-        }
-    }
-}
+
 </script>
 <style scoped>
 * {
@@ -37,9 +35,13 @@ export default {
     box-sizing: border-box;
 }
 
+.background {
+    background-color: #FFF9ED;
+}
+
 .head-con {
     text-align: center;
-    margin: 2rem;
+    padding: 2rem;
 }
 
 .container {
@@ -53,7 +55,7 @@ export default {
     width: 300px;
     height: 350px;
     margin-bottom: 10px;
-    background: #fff;
+    background: #FFF9ED;
 }
 
 .title {
@@ -63,7 +65,7 @@ export default {
 }
 
 .price {
-    color: orange;
+    color: #333;
     margin-left: 10px;
 }
 

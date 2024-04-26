@@ -5,20 +5,55 @@
             <h1>Log in to your account</h1>
             <br>
             <p>Enter your email to Log in</p>
-            <input type="text" id="email" class="tab" placeholder="enter your email">
+            <input type="text" v-model="email" id="email" class="tab" placeholder="enter your email">
             <br>
-            <input type="text" id="password" class="tab" placeholder="enter your password">
+            <input type="text" v-model="password" id="password" class="tab" placeholder="enter your password">
             <br>
-            <button id="login" type="button" class="tab">Log in</button>
+            <button @click="login" class="tab">Log in</button>
             <br>
-            <div id="signup" class="tab"><a href="/pages/register/signup.vue">Sign up</a></div>
+            <div id="signup" class="tab"><a href="/register/signup">Sign up</a></div>
+            <p v-if="successMessage" class="success-message">{{ successMessage }}</p>
+            <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
         </div>
 
     </div>
 </template>
 
-<script setup>
+<script>
+import axios from 'axios';
 
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      successMessage: '',
+      errorMessage: '',
+    };
+  },
+methods: {
+  async login() {
+    try {
+      const response = await axios.post('http://localhost:4000/api/login', {
+        email: this.email,
+        password: this.password,
+      });
+
+      this.successMessage = response.data.message;
+      this.errorMessage = '';
+
+      // Redirect to the account page if login is successful
+      if (this.successMessage) {
+        this.$router.push('/menu-pages/account');
+      }
+    } catch (error) {
+      console.error(error.response.data);
+      this.errorMessage = error.response.data.error; // Set error message
+      this.successMessage = '';
+    }
+  },
+},
+};
 </script>
 
 <style scoped>
@@ -27,7 +62,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
 
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
 .background {
     background-color: #fff9ed;
     padding: 100px 0px;
@@ -85,5 +128,6 @@
         color: #333;
 
     }
+    
 }
 </style>

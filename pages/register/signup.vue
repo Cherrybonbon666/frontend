@@ -1,40 +1,87 @@
 <template>
-    <div class="background">
+  <div class="background">
+    <div class="container">
+      <h1>Create an account</h1>
+      <br>
+      <p>Enter your email to Sign up</p>
+      <input type="text" v-model="email" class="tab" placeholder="Enter your email">
+      <br>
+      <input type="password" v-model="password" class="tab" placeholder="Enter your password">
+      <br>
+      <div id="checkbox">
+          <input type="checkbox" id="agree" name="agree" v-model="agree" required>        
+          <label for="agree">
+          I agree to <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </label>
+      </div>
 
-        <div class="container">
-            <h1>Create an account</h1>
-            <br>
-            <p>Enter your email to Sign up</p>
-            <input type="text" id="email" class="tab" placeholder="enter your email">
-            <br>
-            <input type="text" id="password" class="tab" placeholder="enter your password">
-            <br>
-            <div id="checkbox">
-                <input type="checkbox" id="agree" name="agree">
-                <label for="agree">
-                    I agree to<a href="#">Terms of Service</a>
-                    and<a href="#">Privacy Policy</a>
-                </label>
-            </div>
+      <button :disabled="!agree" @click="signup" class="tab">Sign up</button>
+      <div class="login">
+        <p>Already have an account? <a href="/register/login">Login</a></p>
+      </div>
 
-            <div id="signup" class="tab"><a href="/pages/register/signup.vue">Sign up</a></div>
-            <div class="login">
-                <p>Already have an account? <a href="#">Login</a></p>
-            </div>
-        </div>
-
+      <p v-if="successMessage" v-html="successMessage"></p>
+      <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
     </div>
+  </div>
 </template>
 
-<script setup>
 
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      agree: false,
+      successMessage: '',
+      errorMessage: '',
+    };
+  },
+  methods: {
+    async signup() {
+      if (!this.agree) {
+        // Add an error message if the user hasn't agreed to the terms
+        this.errorMessage = 'Please agree to the Terms of Service and Privacy Policy';
+        return;
+      }
+
+      try {
+        const response = await axios.post('http://localhost:4000/api/signup', {
+          email: this.email,
+          password: this.password,
+        });
+
+        this.successMessage = 'Your account has been created successfully. <a href="/register/login">Click here to login</a>';
+        this.errorMessage = ''; // Clear any previous error messages
+      } catch (error) {
+        console.error(error.response.data);
+        this.errorMessage = error.response.data.error; // Set error message
+        this.successMessage = ''; // Clear any previous success messages
+      }
+    },
+  },
+};
 </script>
-
 <style scoped>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Add success message styling */
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+/* Add error message styling */
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
 
 .background {

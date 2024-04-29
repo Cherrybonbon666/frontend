@@ -1,14 +1,13 @@
 <template>
     <div class="background">
         <div class="hero1">
-
             <div class="text1">
                 <h1>Track Your Footprint</h1>
-                <br>
-                <h3>Your Carbon Footprint Today:Number</h3>
+                <br />
+                <h3>Your Carbon Footprint Today: {{ currentFootprint }} kg</h3>
             </div>
 
-            <img src="/public/image/foot.png">
+            <img src="/public/image/foot.png" />
         </div>
 
         <div class="hero2">
@@ -16,26 +15,25 @@
                 <h1>Track product's carbon footprint</h1>
             </div>
             <div class="input-con">
-
                 <div class="input">
-                    <h1>Input</h1>
-                    <p>Product Name</p>
+                    <h1>Product Name</h1>
+                    <input v-model="productName" placeholder="Enter product name" />
                 </div>
                 <div class="input">
-                    <h1>Input</h1>
-                    <p>Category</p>
+                    <h1>Category</h1>
+                    <input v-model="category" placeholder="Enter category" />
                 </div>
                 <div class="input">
-                    <h1>Input</h1>
-                    <p>Carbon Footprint</p>
+                    <h1>Carbon Footprint</h1>
+                    <input v-model="carbonFootprint" placeholder="Enter carbon footprint (kg)" />
                 </div>
                 <div class="input">
-                    <h1>Input</h1>
-                    <p>Description</p>
+                    <h1>Description</h1>
+                    <input v-model="description" placeholder="Enter description" />
                 </div>
 
             </div>
-            <a id="submit" href="#">Submit</a>
+            <button @click="submitData" id="submit" style="cursor: pointer;">Submit</button>
 
         </div>
 
@@ -49,23 +47,13 @@
                     <p>Date</p>
                 </div>
 
-                <div class="his-con">
+                <div class="his-con" v-for="item in history" :key="item.date">
                     <div class="name">
-                        <p>Name</p>
-                        <p>description</p>
+                        <p>{{ item.productName }}</p>
+                        <p>{{ item.description }}</p>
                     </div>
-                    <p>Kg.</p>
-                    <p>DD/MM/YYYY</p>
-                    <label><a href="#"><i class="fa-solid fa-trash"></i></a></label>
-                </div>
-
-                <div class="his-con">
-                    <div class="name">
-                        <p>Name</p>
-                        <p>description</p>
-                    </div>
-                    <p>Kg.</p>
-                    <p>DD/MM/YYYY</p>
+                    <p>{{ item.carbonFootprint }} kg</p>
+                    <p>{{ item.date }}</p>
                     <label><a href="#"><i class="fa-solid fa-trash"></i></a></label>
                 </div>
 
@@ -75,12 +63,43 @@
 </template>
 
 <script setup>
-useHead({
-    title: "TrendyTreehugger | คาร์บอน ฟูทปริ้น เเทรกกิ้ง",
-    meta: [
-        { name: "description", content: "ร้านค้าเเฟชั่น" }
-    ]
-})
+import { ref } from 'vue'
+import axios from 'axios'
+
+const currentFootprint = ref(0)
+const productName = ref('')
+const category = ref('')
+const carbonFootprint = ref('')
+const description = ref('')
+const history = ref([])
+
+const submitData = () => {
+    if (productName.value && category.value && carbonFootprint.value && description.value) {
+        const newItem = {
+            productName: productName.value,
+            category: category.value,
+            carbonFootprint: carbonFootprint.value,
+            description: description.value,
+            date: new Date().toLocaleDateString()
+        }
+
+        // Send data to backend
+        axios.post('/api/carbon/submit-footprint', newItem)
+            .then(response => {
+                console.log(response.data);
+                // If submission is successful, update history locally
+                history.value.push(newItem);
+                // Clear input fields
+                productName.value = ''
+                category.value = ''
+                carbonFootprint.value = ''
+                description.value = ''
+            })
+            .catch(error => {
+                console.error('Error submitting data:', error);
+            });
+    }
+}
 </script>
 
 <style scoped>

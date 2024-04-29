@@ -1,6 +1,13 @@
 <template>
     <div>
-        <h1>favor</h1>
+        <div>
+            <h2>Favorites</h2>
+            <ul>
+                <li v-for="favorite in favorites" :key="favorite.id">
+                    {{ favorite.men_name }}
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 

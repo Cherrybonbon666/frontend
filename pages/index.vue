@@ -72,11 +72,9 @@
             <div class="community-info">
                 <h1>Our Community</h1>
                 <br>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, error labore similique
-                    impedit
-                    iste eum quo, ullam voluptate, ab saepe magni. Vel quam optio, neque eligendi officiis in nostrum
-                    aspernatur dolorem doloribus nihil, eveniet pariatur culpa illo inventore? Sequi perspiciatis natus
-                    doloremque similique illo labore quis sit non eius dicta.
+                <p>We celebrates creativity and diversity, employing and training people from refugee and new migrant communities.
+                    Whether you're just starting out on your eco-fashion journey or you're already a seasoned pro, you'll find a warm welcome here.
+                    Let's share tips, swap stories, and inspire each other to make our world a little greener, one step at a time!
                 </p>
                 <br>
                 <NuxtLink to="/info-pages/community">Join Us</NuxtLink>
@@ -90,13 +88,9 @@
                 <div class="content-info">
                     <h3>Education Resources</h3>
                     <br>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, error labore similique
-                        impedit
-                        iste eum quo, ullam voluptate, ab saepe magni. Vel quam optio, neque eligendi officiis in
-                        nostrum
-                        aspernatur dolorem doloribus nihil, eveniet pariatur culpa illo inventore? Sequi perspiciatis
-                        natus
-                        doloremque similique illo labore quis sit non eius dicta.
+                    <p>If you’re looking to learn more about the fashion industry’s environmental and social impacts,
+                        We dive deep into topics like eco fabrics and labor rights with these 
+                        free sustainable fashion courses, podcasts, publications, and more
                     </p>
                     <br>
                     <NuxtLink to="/info-pages/education" class="explore">Explore</NuxtLink>
@@ -107,13 +101,11 @@
                 <div class="content-info">
                     <h3>Event</h3>
                     <br>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, error labore similique
-                        impedit
-                        iste eum quo, ullam voluptate, ab saepe magni. Vel quam optio, neque eligendi officiis in
-                        nostrum
-                        aspernatur dolorem doloribus nihil, eveniet pariatur culpa illo inventore? Sequi perspiciatis
-                        natus
-                        doloremque similique illo labore quis sit non eius dicta.
+                    <p>We make sustainable fashion accessible. 
+                        Taking a grassroots approach, we help to empower people with skills and resources to help drive 
+                        a positive shift in our collective relationship with clothes.
+                        Explore the different ways people can take action for a better fashion future, 
+                        no matter their background or budget
                     </p>
                     <br>
                     <NuxtLink to="/info-pages/event" class="explore">Explore</NuxtLink>
@@ -124,13 +116,10 @@
                 <div class="content-info">
                     <h3>Campaign & Coupon</h3>
                     <br>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, error labore similique
-                        impedit
-                        iste eum quo, ullam voluptate, ab saepe magni. Vel quam optio, neque eligendi officiis in
-                        nostrum
-                        aspernatur dolorem doloribus nihil, eveniet pariatur culpa illo inventore? Sequi perspiciatis
-                        natus
-                        doloremque similique illo labore quis sit non eius dicta.
+                    <p>the coupon feature. Designed to celebrate your commitment to anti-fast fashion 
+                        and embrace the beauty of sustainable style,
+                        our coupons are more than just savings they're tokens of our shared dedication to a greener, 
+                        more ethical fashion future.
                     </p>
                     <br>
                     <NuxtLink to="/info-pages/campaign" class="explore">Explore</NuxtLink>
